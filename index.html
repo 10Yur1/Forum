@@ -1,134 +1,422 @@
-<?php
-/*
- *  Made by Samerton
- *  https://github.com/NamelessMC/Nameless/
- *  NamelessMC version 2.0.0-pr13
- *
- *  License: MIT
- *
- *  Main index file
- */
+<html>
 
-// Uncomment to enable debugging
-// define('DEBUGGING', 1);
+<head>
+    <title>Giulio Paesani</title>
 
-header('X-Frame-Options: SAMEORIGIN');
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-if ((!defined('DEBUGGING') || !DEBUGGING) && (getenv('NAMELESS_DEBUGGING') || isset($_SERVER['NAMELESS_DEBUGGING']))) {
-    define('DEBUGGING', 1);
-}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
 
-if (defined('DEBUGGING') && DEBUGGING) {
-    ini_set('display_startup_errors', 1);
-    ini_set('display_errors', 1);
-    error_reporting(-1);
-}
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="./css/style.css">
 
-// Ensure PHP version >= 7.4
-if (PHP_VERSION_ID < 70400) {
-    die('NamelessMC is not compatible with PHP versions older than 7.4');
-}
+    <link rel="shortcut icon" href="./img/icon.ico" type="image/x-icon">
 
-if (!is_dir(__DIR__ . '/vendor') || !is_dir(__DIR__ . '/core/assets/vendor')) {
-    die(
-        "Your installation is missing the 'vendor' or 'core/assets/vendor' directory. These directories are included in
-        releases, but not in the git repository. For regular installations, please make sure to download a release from
-        the GitHub releases page, not from the button on the home page to download the latest source code. If you do
-        want to run the latest version from source control for development versions, please run 'composer install'
-        and 'yarnpkg'/'yarn install'."
-    );
-}
+    <meta name="description" content="Sito web personale di Giulio Paesani: Istruzione, competenze e progetti">
+    <meta name="keywords"
+        content="giulio paesani, giulio paesani youtube, giulioandcode, giulio youtube, giulioandcommunity, giulioandcode discord, giulio paesani discord">
+    <meta name="author" content="Giulio Paesani">
 
-// Start page load timer
-define('PAGE_START_TIME', microtime(true));
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Giulio Paesani">
+    <meta property="og:description" content="Sito web personale di Giulio Paesani: Istruzione, competenze e progetti">
+    <meta propertu="og:image" content="https://i.postimg.cc/CxqYjWVT/banner.jpg">
+    <meta property="og:image:type" content="image/jpg" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="672" />
 
-// Definitions
-const PATH = '/';
-const ROOT_PATH = __DIR__;
-$page = 'Home';
+    <meta name="theme-color" content="#62929E">
+</head>
 
-if (!ini_get('upload_tmp_dir')) {
-    $tmp_dir = sys_get_temp_dir();
-} else {
-    $tmp_dir = ini_get('upload_tmp_dir');
-}
+<body>
+    <div id="navbar">
+        <div id="menu">
+            <div><a href="#chiSono">Chi sono</a></div>
+            <div><a href="#istruzione">Istruzione</a></div>
+            <div><a href="#competenze">Competenze</a></div>
+            <div><a href="#progetti">Progetti</a></div>
+        </div>
 
-if ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) {
-    ini_set('session.cookie_secure', 'On');
-}
+        <div id="midNav">
+            <div>
+                <p id="title">Giulio<br>Paesani</p>
+                <p id="subtitle">Ciao sono Giulio, sono uno studente informatico, ho 17 anni, e questo sono io...</p>
+            </div>
+        </div>
 
-ini_set('session.cookie_httponly', 1);
-ini_set('open_basedir', ROOT_PATH . PATH_SEPARATOR . $tmp_dir . PATH_SEPARATOR . '/proc/stat');
+        <div id="midNav2">
+            <img src="./img/Giulio.webp" id="imgGiulio" alt="Giulio Paesani">
+        </div>
+    </div>
 
-// Get the directory the user is trying to access
-$directory = $_SERVER['REQUEST_URI'];
-$directories = explode('/', $directory);
-$lim = count($directories);
+    <div id="content">
+        <div id="arrowContainer"> <a href="#chiSono">
+                <img src="./img/arrow.svg"></a>
+        </div>
 
-if (isset($_GET['route']) && $_GET['route'] == '/rewrite_test') {
-    require_once('rewrite_test.php');
-    die();
-}
+        <div class="contentContainer" id="chiSono" titolo="Io sono...">
+            <div class="bigText">
+                Ciao io sono Giulio, ho <span class="underlineText tertiaryText">
+                    <div class="popup smallText" style="left: 230px; bottom: 10px">
+                        <div>
+                            <p>Per l'esattezza...</p>
+                            <div id="countdown">
+                                <div class="countdownDiv miniText">
+                                    anni
+                                    <div class="countdownNum boldText">
+                                        12
+                                    </div>
+                                </div>
+                                <div class="countdownDiv miniText">
+                                    giorni
+                                    <div class="countdownNum boldText">
+                                        12
 
-// Start initialising the page
-require(ROOT_PATH . '/core/init.php');
+                                    </div>
+                                </div>
+                                <div class="countdownDiv miniText">
+                                    ore
+                                    <div class="countdownNum boldText">
+                                        12
 
-if (!isset($GLOBALS['config']['core']) && is_file(ROOT_PATH . '/install.php')) {
-    Redirect::to('install.php');
-}
+                                    </div>
+                                </div>
+                                <div class="countdownDiv miniText">
+                                    minuti
+                                    <div class="countdownNum boldText">
+                                        12
 
-// Get page to load from URL
-if (!isset($_GET['route']) || $_GET['route'] == '/') {
-    if (((!isset($_GET['route']) || ($_GET['route'] != '/')) && count($directories) > 1)) {
-        require(ROOT_PATH . '/404.php');
-    } else {
-        // Homepage
-        $pages->setActivePage($pages->getPageByURL('/'));
-        require(ROOT_PATH . '/modules/Core/pages/index.php');
-    }
-    die();
-}
+                                    </div>
+                                </div>
+                                <div class="countdownDiv miniText">
+                                    secondi
+                                    <div class="countdownNum boldText">
+                                        12
 
-$route = rtrim(strtok($_GET['route'], '?'), '/');
+                                    </div>
+                                </div>
+                            </div>
+                            <p>Sono nato esattamente il</p>
+                            <p><span class="boldText">20 Agosto 2004</span> alle <span class="boldText">16:40</span></p>
+                        </div>
+                    </div>17 anni
+                </span> e sono un ragazzo
+                appassionato al mondo della programmazione.
+                Sono un tipo molto riservato, e <span class="underlineText tertiaryText">
+                    <div class="popup smallText" style="left: -75px">
+                        <div>
+                            <div class="competenzeColumn">
+                                <div>
+                                    <div>Socialità</div>
+                                    <div class="progress">
+                                        <div style="width: 40%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>Gentilezza</div>
+                                    <div class="progress">
+                                        <div style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>Ansia</div>
+                                    <div class="progress">
+                                        <div style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="competenzeColumn">
+                                <div>
+                                    <div>Coraggio</div>
+                                    <div class="progress">
+                                        <div style="width: 55%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>Affidabilità</div>
+                                    <div class="progress">
+                                        <div style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>Pazienza</div>
+                                    <div class="progress">
+                                        <div style="width: 70%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>poco socievole
+                </span>, a cui
+                non piace troppo uscire dalla propria confort zone. A volte però, ignorando ansie e paure, cerco di
+                abbattere queste insicurezze e sfruttare al massimo tutto il tempo che ho.
+                Frequento un <a href="#istruzione"><span class="underlineText tertiaryText">istituto tecnico
+                        informatico</span></a>, ma tutto ciò
+                che conosco lo ho imparato a casa nella mia cameretta.
+                Da qualche anno mi sono anche buttato in una nuova avventura nel mondo di YouTube dove parlo di
+                programmazione e informatica, ma mi diverto anche con tanto intrattenimento e cose un po' più personali.
+                Spero che un giorno tutto questo si trasformi in altro, oltre ad una grande passione.
+                Nel frattempo mi diverto, cerco di fare del mio meglio, pensando però sempre al mio futuro
+            </div>
 
-$all_pages = $pages->returnPages();
+            <div class="contentSubtitle mediumText">I miei social</div>
+            <div>
+                <div class="socialColumn">
+                    <a href="mailto:giuliopaesani@gmail.com">
+                        <div class="socialButton">
+                            <div class="socialButtonImg"><img src="./img/mail.svg"></div>
+                            <div><span class="bigText boldText">giuliopaesani@gmail.com</span></div>
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/giulio_paesani">
+                        <div class="socialButton">
+                            <div class="socialButtonImg"><img src="./img/instagram.svg"></div>
+                            <div><span class="bigText boldText">giulio_paesani</span></div>
+                        </div>
+                    </a>
+                    <a href="https://discord.gg/ypTCaveew2">
+                        <div class="socialButton">
+                            <div class="socialButtonImg"><img src="./img/discord.svg"></div>
+                            <div><span class="bigText boldText">GiulioAndCode#4272</span></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="socialColumn">
+                    <a href="https://www.youtube.com/giulioandcode">
+                        <div class="socialButton">
+                            <div class="socialButtonImg"><img src="./img/youtube.svg"></div>
+                            <div><span class="bigText boldText">GiulioAndCode</span></div>
+                        </div>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCvIafNR8ZvZyE5jVGVqgVfA">
+                        <div class="socialButton">
+                            <div class="socialButtonImg"><img src="./img/youtube.svg"></div>
+                            <div><span class="bigText boldText">Giulio</span></div>
+                        </div>
+                    </a>
+                    <a href="https://github.com/GiulioPaesani">
+                        <div class="socialButton">
+                            <div class="socialButtonImg"><img src="./img/github.svg"></div>
+                            <div><span class="bigText boldText">GiulioPaesani</span></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
 
-if (array_key_exists($route, $all_pages)) {
-    $pages->setActivePage($all_pages[$route]);
-    if (isset($all_pages[$route]['custom'])) {
-        require(implode(DIRECTORY_SEPARATOR, [ROOT_PATH, 'modules', 'Core', 'pages', 'custom.php']));
-        die();
-    }
+        <div class="contentContainer" id="istruzione" titolo="Istruzione">
+            <div class="bigText">Istituto Tecnico Tecnologico - Indirizzo Informatico</div>
+            <div class="mediumText tertiaryText">ITTS Rimini O. Belluzzi L. Da Vinci</div>
 
-    $path = implode(DIRECTORY_SEPARATOR, [ROOT_PATH, 'modules', $all_pages[$route]['module'], $all_pages[$route]['file']]);
+            <div class="contentSubtitle bigText boldText">Quarto anno in corso...</div>
+            <div class="bigText">Data di Diploma prevista: Giugno 2023</div>
 
-    if (file_exists($path)) {
-        require($path);
-        die();
-    }
-} else {
-    // Use recursion to check - might have URL parameters in path
-    $path_array = explode('/', $route);
 
-    for ($i = count($path_array) - 2; $i > 0; $i--) {
+            <div class="contentSubtitle mediumText">Materie di indirizzo</div>
+            <div class="bigText">
+                <span class="bigText boldText">- Informatica</span><br>
+                Programmazione OOP, Linguaggio C#<br>
+                <span class="bigText boldText">- SIR </span>(Sistemi e Reti)<br>
+                Linguaggi HTML, Css, Javascript, Struttura e creazione di una rete<br>
+                <span class="bigText boldText">- TPSIT </span>(Tecnologie e progettazione di sistemi informatici)<br>
+                Linguaggio C, Progettazione e documentazione del software<br>
+                <span class="bigText boldText">- Telecomunicazioni</span><br>
+                Teoria, progettazione e realizzazione di semplici circuiti elettronici<br>
+            </div>
 
-        $new_path = '/';
-        for ($n = 1; $n <= $i; $n++) {
-            $new_path .= $path_array[$n] . '/';
-        }
+            <div class="contentSubtitle mediumText">Lingue</div>
+            <div class="lingue">
+                <img src="./img/italiano.webp">
+                <span class="bigText boldText">Italiano</span><span class="bigText">- Madrelingua</span>
+            </div>
+            <div class="lingue">
+                <img src="./img/inglese.webp">
+                <span class="bigText boldText">Inglese</span><span class="bigText">- Intermedio</span>
+            </div>
+            <div class="lingue">
+                <img src="./img/francese.webp">
+                <span class="bigText boldText">Francese</span><span class="bigText">- Base</span>
+            </div>
 
-        $new_path = rtrim($new_path, '/');
+        </div>
 
-        if (array_key_exists($new_path, $all_pages)) {
-            $path = implode(DIRECTORY_SEPARATOR, [ROOT_PATH, 'modules', $all_pages[$new_path]['module'], $all_pages[$new_path]['file']]);
+        <div class="contentContainer" id="competenze" titolo="Le mie competenze">
+            <div class="bigText">
+                La scuola mi ha solamente dato, e mi sta dando, una piccola base delle mie competenze, per questo cerco
+                di imparare giorno per giorno in camera mia nuove cose da autodidatta
+            </div>
 
-            if (file_exists($path)) {
-                $pages->setActivePage($all_pages[$new_path]);
-                require($path);
-                die();
-            }
-        }
-    }
-}
+            <div>
+                <div class="competenzeColumn">
+                    <div class="contentSubtitle mediumText">Compentenze generali</div>
+                    <div>
+                        <div class="bigText">Utilizzo di posta elettronica</div>
+                        <div class="progress">
+                            <div style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bigText">Software Adobe</div>
+                        <div class="progress">
+                            <div style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bigText">Software Suite Office</div>
+                        <div class="progress">
+                            <div style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bigText">Editing video</div>
+                        <div class="progress">
+                            <div style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bigText">Computer Hardware, Sistemi operativi</div>
+                        <div class="progress">
+                            <div style="width: 30%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="competenzeColumn">
+                    <div class="contentSubtitle mediumText">Compentenze di programmazione</div>
+                    <div>
+                        <div class="bigText">HTML</div>
+                        <div class="progress">
+                            <div style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bigText">CSS</div>
+                        <div class="progress">
+                            <div style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bigText">JavaScript/Node.js</div>
+                        <div class="progress">
+                            <div style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bigText">C</div>
+                        <div class="progress">
+                            <div style="width: 20%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bigText">C#</div>
+                        <div class="progress">
+                            <div style="width: 40%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-require(ROOT_PATH . '/404.php');
+        <div class="contentContainer" id="progetti" titolo="I miei progetti">
+            <div class="contentSubtitle mediumText">Contenuti su YouTube</div>
+            <div class="project">
+                <div class="projectText bigText">
+                    Qualche anno fa decisi un po' per noia, un po' per
+                    mettermi in gioco e un po' per realizzare un mio
+                    piccolo sogno, di iniziare a creare contenuti su
+                    YouTube. Realizzo tutt'ora video riguardanti i
+                    mondo della programmazione e
+                    dell'intrattenimento, cosa che amo fare.
+                    Con il tempo sono cresciuto, nel mio piccolo, e
+                    migliorato molto. Cerco ogni giorno di maturare
+                    sempre di più, sia dal lato dei contenuti che dal
+                    lato personale
+                </div>
+                <div class="projectImg" style="background-image: url('./img/YouTube.webp')"
+                    alt="Giulio Paesani youtube"></div>
+            </div>
+            <a href="https://www.youtube.com/giulioandcode">
+                <div class="socialButton">
+                    <div class="socialButtonImg"><img src="./img/youtube.svg"></div>
+                    <div><span class="bigText boldText">GiulioAndCode</span></div>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/channel/UCvIafNR8ZvZyE5jVGVqgVfA">
+                <div class="socialButton">
+                    <div class="socialButtonImg"><img src="./img/youtube.svg"></div>
+                    <div><span class="bigText boldText">Giulio</span></div>
+                </div>
+            </a>
+
+            <div class="contentSubtitle mediumText">Server Discord + Bot personale</div>
+            <div class="project">
+                <div class="projectText bigText">
+                    Attraverso il mio canale YouTube ho creato una
+                    grande community, per questo più di un anno fa
+                    ho avuto la malsana idea di aprire un mio server
+                    Discord. Pensavo non fosse mai entrato nessuno,
+                    lo avevo realizzato così, giusto per, invece ancora
+                    oggi parlo, scrivo e mi diverto con tantissimi
+                    utenti che mi seguono e questa è una cosa che adoro. Ci aiutiamo a vicenda e io con loro ho imparato
+                    un sacco di cose.
+                    Inoltre attraverso le mie conoscenze di <span class="underlineText tertiaryText">
+                        <div class="popup smallText" style="left: -125px">
+                            <div>
+                                Discord.js è il <span class="boldText">package</span> più comune di <span
+                                    class="boldText">Node.js</span> che si
+                                interfaccia direttamente con le API di
+                                Discord, permettendo agli sviluppatori di creare <span class="boldText">bot</span>
+                            </div>
+                        </div>
+                        Discord.js
+                    </span>,
+                    non troppo elevate ma sufficienti, ho realizzato
+                    un bot privato all'interno di questo server, con tantissimi comandi e funzioni esclusive, che
+                    migliora ancora di più la nostra esperienza all'interno del server
+                </div>
+                <div class="projectImg" style="background-image: url('./img/GiulioAndCommunity.webp')"
+                    lt="GiulioAndCommunity"></div>
+            </div>
+            <a href="https://discord.gg/ypTCaveew2">
+                <div class="socialButton">
+                    <div class="socialButtonImg"><img src="./img/discord.svg"></div>
+                    <div><span class="bigText boldText">GiulioAndCommunity</span></div>
+                </div>
+            </a>
+            <a href="https://github.com/GiulioPaesani/GiulioAndCommunityBOT">
+                <div class="socialButton">
+                    <div class="socialButtonImg"><img src="./img/github.svg"></div>
+                    <div><span class="bigText boldText">GiulioAndCommunity BOT</span></div>
+                </div>
+            </a>
+        </div>
+
+        <div id="footer">
+            <p class="bigText">Sito realizzato da <span class="boldText">Giulio Paesani</span></p>
+            <p class="mediumText">Credits</p>
+            <div id="credits">
+                <a href="https://www.flaticon.com">
+                    <div class="socialButton">
+                        <div class="socialButtonImg"><img src="./img/flaticon.webp"></div>
+                        <div><span class="bigText boldText">Icons</span><span class="bigText"> -
+                                https://www.flaticon.com</span></div>
+                    </div>
+                </a>
+                <a href="https://coolors.co">
+                    <div class="socialButton">
+                        <div class="socialButtonImg"><img src="./img/coolorsco.webp"></div>
+                        <div><span class="bigText boldText">Colors</span><span class="bigText"> -
+                                https://coolors.co</span></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="./script/script.js"></script>
+</body>
+
+</html>
